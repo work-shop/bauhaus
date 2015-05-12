@@ -1,0 +1,724 @@
+
+@import 'mixins';
+
+
+
+/********** @VARIABLES *********/
+
+$brand: #cb2026;
+$ultra-light: #fafafa;
+$light: #f1f1f1;
+$dark: #222222;
+$error: #ff4a4a;
+$brown: #3a1e1a;
+$yellow: #ffcc00;
+
+
+
+$courses: #47c1c3;//original
+$courses: #E9C532;
+
+
+$research: #8cc63e;//original
+$research: #0E76BB;
+
+
+$interviews: #00a1d3;//original
+$interviews: #268080;
+
+
+$lectures: #cb2026;//original
+$lectures: #00A0D2;
+
+$nav-height: 50px;
+$mobile-margins: 15px;
+
+$transitions: .25s;
+
+
+/********** @RESET *********/
+
+@import 'reset';
+
+
+
+/********** @TYPE *********/
+
+body{
+	font-size: 18px;
+	background: $ultra-light;
+}
+
+div { font-family:"Regular", Futura, sans-serif; font-weight:600; font-style:normal; }
+
+.uppercase{
+	text-transform: uppercase;
+}
+
+.underline{
+	border-bottom: 2px solid;
+}
+
+.centered{
+	text-align: center;
+}
+
+.righted{
+	text-align: right;
+}
+
+h1,h2,h3,h4,h5,h6{
+	line-height: 1.3;
+	font-weight: 500;
+}
+
+h1,.h1{
+	font-size: 3em;
+}
+
+h2,.h2{
+	font-size: 2em;
+}
+
+h3,.h3{
+	font-size: 1.6em;
+}
+
+h4,.h4{
+	font-size: 1.25em;
+}
+
+h5,.h5{
+	font-size: 1em;
+}
+
+h6,.h6{
+	font-size: .8em;
+}
+
+article a{
+	@extend .underline;
+	@include transition(all,.125s);
+
+	&:hover,&:focus{
+		border-color: $brand;
+	}
+
+}
+
+//md
+@media (max-width: 1200px) {
+	body{
+		font-size: 17px;
+	}
+}
+
+//sm
+@media (max-width: 992px) {
+	body{
+		font-size: 15px;
+	}
+
+	h1,.h1{
+		font-size: 2.5em;
+	}
+
+	h2,.h2{
+		font-size: 1.25em;
+	}
+
+	h3,.h3{
+		font-size: 1.1em;
+	}
+
+} 
+
+//xs
+@media (max-width: 767px) {
+	body{
+		font-size: 14px;
+	}
+
+	h1,.h1{
+		font-size: 2em;
+	}
+
+	h2,.h2{
+		font-size: 1.25em;
+	}
+
+	h3,.h3{
+		font-size: 1.1em;
+	}
+
+	h4,.h4{
+		font-size: 1em;
+	}
+
+	h5,.h5{
+		font-size: 1em;
+	}
+
+	h6,.h6{
+		font-size: .9em;
+	}
+
+}
+
+.bold{
+	font-family: "A2 Regular Bold", Futura, sans-serif;
+	font-weight: bold;
+}
+
+.italic{
+	font-style: italic;
+}
+
+.white{
+	color: $ultra-light;
+	&:hover {
+		color: $ultra-light;
+	}
+}
+
+.dark{
+	color: $dark;
+}
+
+.brand{
+	color: $brand;
+}
+
+.courses, .courses a{
+	color: $courses;
+}
+.courses a:hover {
+	color: darken($courses,10);
+}
+
+.research, .research a{
+	color: $research;
+}
+.research a:hover {
+	color: darken($research,20);
+}
+
+.interviews, .interviews a{
+	color: $interviews;
+}
+.interviews a:hover {
+	color: darken($interviews,20);
+}
+
+.lectures, .lectures a{
+	color: $lectures;
+}
+.lectures a:hover {
+	color: darken($lectures,20);
+}
+
+.brown-yellow{
+	color: $yellow;
+}
+
+.icon{
+	&:before {
+    content: attr(data-icon);
+    font-family: "modern_pictograms_proregular";
+	font-size: 30px;
+	line-height: 100%;
+	vertical-align: middle;
+	position: relative;	
+	}
+	
+	&.large:before{
+		font-size: 72px;
+	}
+
+}
+
+
+
+/********** @MARGINS AND PADDING *********/
+
+.m0{
+	margin: 0;
+}
+
+@for $i from 1 through 9 {
+  .m#{$i} { 
+  	margin-bottom: 1em * $i;
+  	margin-top: 1em * $i;
+  }
+}
+
+@for $i from 1 through 9 {
+  .mb#{$i} { 
+  	margin-bottom: 1em * $i;
+  }
+}
+
+@for $i from 1 through 9 {
+  .mt#{$i} { 
+  	margin-top: 1em * $i;
+  }
+}
+
+@for $i from 1 through 9 {
+  .ml#{$i} { 
+  	margin-left: 1em * $i;
+  }
+}
+
+@for $i from 1 through 9 {
+  .mr#{$i} { 
+  	margin-right: 1em * $i;
+  }
+}
+
+
+@for $i from 1 through 9 {
+  .p#{$i} { 
+  	padding: 1em * $i;
+  }
+}
+
+.padded-less{
+	padding-top: 2.5%;
+	padding-bottom: 2.5%;
+}
+
+.padded{
+	padding-top: 4%;
+	padding-bottom: 4.25%;
+}
+
+.padded-more{
+	padding-top: 8%;
+	padding-bottom: 9%;
+}
+
+
+
+/********** @BACKGROUNDS *********/
+
+.bg-white{
+	background: $ultra-light;
+}
+
+.bg-light{
+	background: $light;
+}
+
+.bg-brand{
+	background: $brand;
+}
+
+.bg-dark{
+	background: $dark;
+}
+
+.bg-brown{
+ 	background: $brown;
+}
+
+.bg-courses{
+ 	background: $courses;
+}
+
+.bg-research{
+ 	background: $research;
+}
+
+.bg-interviews{
+ 	background: $interviews;
+}
+
+.bg-lectures{
+ 	background: $lectures;
+}
+
+.bg-gradient{
+ 	@include gradient();
+}
+
+.shadow{
+	@include box-shadow(0,0,1px,rgba(53,50,50,.35));
+}
+
+.yellow{
+	background: yellow;
+}
+
+.pink{
+	background: pink;
+}
+
+.orange{
+	background: orange;
+}
+
+.green{
+	background: lime;
+}
+
+.background-cover{
+	background-size: cover;
+}
+
+.background-mask-light{
+	&:before{
+		content: '';
+		display: block;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		//z-index: 1;
+		background: rgba(255,255,255,.5);
+		@include transition(all);
+	}
+}
+
+.background-mask-dark{
+	&:before{
+		content: '';
+		display: block;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		//z-index: 1;
+		background: rgba(40,30,30,.75);
+		@include transition(all);
+	}
+}
+
+.border-ultralight{
+ 	@include border($ultra-light);
+ 	&:hover {
+ 		border-color: darken($ultra-light,10);
+ 	}
+}
+
+.border-light{
+ 	@include border($light);
+ 	&:hover {
+ 		border-color: darken($light,10);
+ 	}
+}
+
+.border-courses{
+ 	@include border($courses);
+ 	&:hover {
+ 		//border-color: darken($courses,10);
+ 	}
+}
+
+.border-research{
+ 	@include border($research);
+ 	&:hover {
+ 		//border-color: darken($research,10);
+ 	}
+}
+
+.border-interviews{
+ 	@include border($interviews);
+ 	&:hover {
+ 		//border-color: darken($interviews,10);
+ 	}
+}
+
+.border-lectures{
+ 	@include border($lectures);
+ 	&:hover {
+ 		//border-color: darken($lectures,10);
+ 	}
+}
+
+.border-top-courses{
+	border-top: 2px solid $courses;
+}
+
+.border-top-research{
+	border-top: 2px solid $research;
+}
+
+.border-top-interviews{
+	border-top: 2px solid $interviews;
+}
+
+.border-top-lectures{
+	border-top: 2px solid $lectures;
+}
+
+.border-bottom-courses{
+	border-bottom: 2px solid $courses;
+	&:hover {
+		border-color: darken($courses,10);
+	}
+}
+
+.border-bottom-research{
+	border-bottom: 2px solid $research;
+	&:hover {
+		border-color: darken($research,10);
+	}
+}
+
+.border-bottom-interviews{
+	border-bottom: 2px solid $interviews;
+	&:hover {
+		border-color: darken($interviews,10);
+	}
+}
+
+.border-bottom-lectures{
+	border-bottom: 2px solid $lectures;
+	&:hover {
+		border-color: darken($lectures,10);
+	}
+}
+
+
+/********** @STRUCTURE AND POSITION *********/
+
+.full{
+	width: 100%;
+}
+
+.left{
+	float: left;
+}
+
+.right{
+	float: right;
+}
+
+.vertical-center{
+	margin-top: 0;
+	position: relative;
+	top: 49%;
+	@include transform(translate(0,-50%));	
+}
+
+.display-block{
+	display: block;
+}
+
+.crop{
+	overflow: hidden;
+}
+
+
+
+/********** @ANIMATIONS *********/
+
+$slide-distance-vertical: 20px;
+
+.fade-in{
+	@include animation(fade-in, 1s, ease, 0s, 1);
+}
+@include keyframes(fade-in){
+	0% { opacity: 0;  }
+	100% { opacity: 1; }	
+}
+
+.fade-out{
+	@include animation(fade-out, 1s, ease, 0s, 1);
+}
+@include keyframes(fade-out){
+	0% { opacity: 1;  }
+	100% { opacity: 0; }	
+}
+
+.fade-in-slide-up{
+	@include animation(fade-in-slide-up, .5s, ease, 1s, 1);
+	position: relative;
+}
+@include keyframes(fade-in-slide-up){
+	0% { opacity: 0; top: $slide-distance-vertical; }
+	50% { opacity: 1; top: $slide-distance-vertical / 3; }
+	100% { opacity: 1; top: 0px; }	
+}
+
+.fade-in-slide-down{
+	@include animation(fade-in-slide-down, .5s, ease, 1s, 1);
+	position: relative;
+}
+@include keyframes(fade-in-slide-down){
+	0% { opacity: 0; top: -1 * $slide-distance-vertical; }	
+	50% { opacity: 1; top: -1 * ($slide-distance-vertical / 3); }
+	100% { opacity: 1; top: 0px; }	
+}
+
+
+
+/********** @FANCY OBJECTS *********/
+
+.loading{
+	opacity: 0;
+	@include transition(opacity,.25s);
+}
+
+.loaded{
+	opacity: 1;
+}
+
+.block{
+	position: relative;
+	width: 100%;
+	display: block;
+	z-index: 1;
+
+	//outline: 10px solid yellow;
+
+	&.crop{
+		overflow: hidden;
+	}
+
+	&.active{
+		//outline: 10px solid yellow;
+	}
+
+	&.activated{
+
+	}
+
+}
+
+.block-background{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	background-size: cover;
+	background-position: center top;	
+	
+	&:after{
+		content: '';
+		display: block;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		z-index: 2;
+		background: rgba(0,0,0,0);
+		@include transition(all);
+	}
+}
+
+.background{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+
+.nav{
+	height: $nav-height;
+
+	li{
+
+		&:hover{
+			border-bottom: 4px solid $dark;
+		}
+
+		a{
+			box-sizing: padding-box;
+			display: block;
+			padding: 0 15px;
+			font-size: 19px;
+			@include transition();
+
+			&.white{
+				color: white;
+			}
+		}
+
+	}	
+
+	&.nav-inline{
+		li{
+			display: inline-block;			
+			height: $nav-height - 0px;			
+			line-height: $nav-height - 0px;
+			vertical-align: middle;			
+			margin-right: 5px;
+			position: relative;
+			top: 0px;
+			padding-top: 0px;
+		}
+	}
+
+}
+
+#edit-button{
+	position: fixed;
+	bottom: 80px;
+	right: 30px;
+	z-index: 10000;
+	width: 40px;
+	height: 40px;
+	display: table;
+	@include transition();
+	background: #00f;
+	padding: 5px 9px;
+
+	&:hover{
+		bottom: 83px;
+		background: #11f;
+	}
+}
+
+#edit-button-2{
+	position: fixed;
+	bottom: 130px;
+	right: 30px;
+	z-index: 10000;
+	width: 40px;
+	height: 40px;
+	display: block;
+	@include transition();
+	background: #f8ed31;
+	padding: 5px 9px;
+
+
+	&:hover{
+		bottom: 133px;
+	}
+
+}
+
+@media (max-width: 992px) {
+
+.nav{
+
+	li{
+		a{
+			font-size: 17px;
+			padding: 0 7px;
+		}
+
+	}	
+
+	&.nav-inline{
+		li{
+			margin-right: 2px;
+			position: relative;
+			top: 3px;
+		}
+	}
+
+}
+
+
+}
+
