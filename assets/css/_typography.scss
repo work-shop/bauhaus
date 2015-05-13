@@ -1,0 +1,194 @@
+/********** @TYPOGRAPHY *********/
+
+body{
+	font-size: 18px;
+	background: $ultra-light;
+}
+
+div { font-family:"Regular", Futura, sans-serif; font-weight:600; font-style:normal; }
+
+.uppercase{
+	text-transform: uppercase;
+}
+
+.underline{
+	border-bottom: 2px solid;
+}
+
+.centered{
+	text-align: center;
+}
+
+.righted{
+	text-align: right;
+}
+
+h1,h2,h3,h4,h5,h6{
+	line-height: 1.3;
+	font-weight: 500;
+}
+
+h1,.h1{
+	font-size: 3em;
+}
+
+h2,.h2{
+	font-size: 2em;
+}
+
+h3,.h3{
+	font-size: 1.6em;
+}
+
+h4,.h4{
+	font-size: 1.25em;
+}
+
+h5,.h5{
+	font-size: 1em;
+}
+
+h6,.h6{
+	font-size: .8em;
+}
+
+article a{
+	@extend .underline;
+	@include transition(all,.125s);
+
+	&:hover,&:focus{
+		border-color: $brand;
+	}
+
+}
+
+//md
+@media (max-width: 1200px) {
+	body{
+		font-size: 17px;
+	}
+}
+
+//sm
+@media (max-width: 992px) {
+	body{
+		font-size: 15px;
+	}
+
+	h1,.h1{
+		font-size: 2.5em;
+	}
+
+	h2,.h2{
+		font-size: 1.25em;
+	}
+
+	h3,.h3{
+		font-size: 1.1em;
+	}
+
+} 
+
+//xs
+@media (max-width: 767px) {
+	body{
+		font-size: 14px;
+	}
+
+	h1,.h1{
+		font-size: 2em;
+	}
+
+	h2,.h2{
+		font-size: 1.25em;
+	}
+
+	h3,.h3{
+		font-size: 1.1em;
+	}
+
+	h4,.h4{
+		font-size: 1em;
+	}
+
+	h5,.h5{
+		font-size: 1em;
+	}
+
+	h6,.h6{
+		font-size: .9em;
+	}
+
+}
+
+.bold{
+	font-family: "A2 Regular Bold", Futura, sans-serif;
+	font-weight: bold;
+}
+
+.italic{
+	font-style: italic;
+}
+
+.white{
+	color: $ultra-light;
+	&:hover {
+		color: $ultra-light;
+	}
+}
+
+.dark{
+	color: $dark;
+}
+
+.brand{
+	color: $brand;
+}
+
+.courses, .courses a{
+	color: $courses;
+}
+.courses a:hover {
+	color: darken($courses,10);
+}
+
+.research, .research a{
+	color: $research;
+}
+.research a:hover {
+	color: darken($research,20);
+}
+
+.interviews, .interviews a{
+	color: $interviews;
+}
+.interviews a:hover {
+	color: darken($interviews,20);
+}
+
+.lectures, .lectures a{
+	color: $lectures;
+}
+.lectures a:hover {
+	color: darken($lectures,20);
+}
+
+.brown-yellow{
+	color: $yellow;
+}
+
+.icon{
+	&:before {
+    content: attr(data-icon);
+    font-family: "modern_pictograms_proregular";
+	font-size: 30px;
+	line-height: 100%;
+	vertical-align: middle;
+	position: relative;	
+	}
+	
+	&.large:before{
+		font-size: 72px;
+	}
+
+}

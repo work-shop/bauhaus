@@ -5,7 +5,7 @@ var loaded = false;
 var state = 'intro';
 var moving = false;
 
-var log = console.log;
+
 
 //initial events, and general event binding
 jQuery(document).ready(function($) {
@@ -13,6 +13,9 @@ jQuery(document).ready(function($) {
 	view();
 
 	videoSetup();
+
+	/* for touch scrolling, this event fires when touch point is moved*/
+	document.addEventListener("touchmove", scrollStart, false);
 
 	$('#fade').click(function(event) {
 	  	event.preventDefault();
@@ -597,6 +600,10 @@ function videoSetup() {
 	}	
 }
 
+
+function scrollStart(){
+	$('body').css('background-color','red');
+}
 
 
 
