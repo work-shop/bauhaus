@@ -103,9 +103,3 @@
     @content;
   }
 }
-
-@mixin border($border-color) {
-	border: 8px solid $border-color;
-	@include transition(all);
-}
-

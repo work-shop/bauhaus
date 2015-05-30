@@ -3,7 +3,6 @@ OBJECTS
 margins and padding	
 structure and position
 backgrounds
-
 animations
 forms
 fancy objects
@@ -90,48 +89,25 @@ flexslider
 	background: $dark;
 }
 
-.bg-brown{
- 	background: $brown;
-}
-
-.bg-courses{
- 	background: $courses;
-}
-
-.bg-research{
- 	background: $research;
-}
-
-.bg-interviews{
- 	background: $interviews;
-}
-
-.bg-lectures{
- 	background: $lectures;
-}
-
-.bg-gradient{
- 	@include gradient();
-}
-
-.shadow{
-	@include box-shadow(0,0,1px,rgba(53,50,50,.35));
-}
-
-.yellow{
+.bg-yellow{
 	background: yellow;
 }
 
-.pink{
+.bg-pink{
 	background: pink;
 }
 
-.orange{
+.bg-orange{
 	background: orange;
 }
 
-.green{
-	background: lime;
+.bg-green{
+	background: green;
+}
+
+
+.bg-gradient{
+ 	@include gradient();
 }
 
 .background-cover{
@@ -168,6 +144,12 @@ flexslider
 	}
 }
 
+
+
+.shadow{
+	@include box-shadow(0,0,1px,rgba(53,50,50,.35));
+}
+
 .border-ultralight{
  	@include border($ultra-light);
  	&:hover {
@@ -180,79 +162,6 @@ flexslider
  	&:hover {
  		border-color: darken($light,10);
  	}
-}
-
-.border-courses{
- 	@include border($courses);
- 	&:hover {
- 		//border-color: darken($courses,10);
- 	}
-}
-
-.border-research{
- 	@include border($research);
- 	&:hover {
- 		//border-color: darken($research,10);
- 	}
-}
-
-.border-interviews{
- 	@include border($interviews);
- 	&:hover {
- 		//border-color: darken($interviews,10);
- 	}
-}
-
-.border-lectures{
- 	@include border($lectures);
- 	&:hover {
- 		//border-color: darken($lectures,10);
- 	}
-}
-
-.border-top-courses{
-	border-top: 2px solid $courses;
-}
-
-.border-top-research{
-	border-top: 2px solid $research;
-}
-
-.border-top-interviews{
-	border-top: 2px solid $interviews;
-}
-
-.border-top-lectures{
-	border-top: 2px solid $lectures;
-}
-
-.border-bottom-courses{
-	border-bottom: 2px solid $courses;
-	&:hover {
-		border-color: darken($courses,10);
-	}
-}
-
-.border-bottom-research{
-	border-bottom: 2px solid $research;
-	&:hover {
-		border-color: darken($research,10);
-	}
-}
-
-.border-bottom-interviews{
-	border-bottom: 2px solid $interviews;
-	&:hover {
-		border-color: darken($interviews,10);
-	}
-}
-
-.border-bottom-lectures{
-	border-bottom: 2px solid $lectures;
-	&:hover {
-		border-color: darken($lectures,10);
-	}
-}
 
 
 /********** @STRUCTURE AND POSITION *********/
@@ -345,14 +254,12 @@ $slide-distance-vertical: 20px;
 	display: block;
 	z-index: 1;
 
-	//outline: 10px solid yellow;
-
 	&.crop{
 		overflow: hidden;
 	}
 
 	&.active{
-		//outline: 10px solid yellow;
+
 	}
 
 	&.activated{
@@ -393,45 +300,6 @@ $slide-distance-vertical: 20px;
 	height: 100%;
 }
 
-
-.nav{
-	height: $nav-height;
-
-	li{
-
-		&:hover{
-			border-bottom: 4px solid $dark;
-		}
-
-		a{
-			box-sizing: padding-box;
-			display: block;
-			padding: 0 15px;
-			font-size: 19px;
-			@include transition();
-
-			&.white{
-				color: white;
-			}
-		}
-
-	}	
-
-	&.nav-inline{
-		li{
-			display: inline-block;			
-			height: $nav-height - 0px;			
-			line-height: $nav-height - 0px;
-			vertical-align: middle;			
-			margin-right: 5px;
-			position: relative;
-			top: 0px;
-			padding-top: 0px;
-		}
-	}
-
-}
-
 #edit-button{
 	position: fixed;
 	bottom: 80px;
@@ -449,53 +317,6 @@ $slide-distance-vertical: 20px;
 		background: #11f;
 	}
 }
-
-#edit-button-2{
-	position: fixed;
-	bottom: 130px;
-	right: 30px;
-	z-index: 10000;
-	width: 40px;
-	height: 40px;
-	display: block;
-	@include transition();
-	background: #f8ed31;
-	padding: 5px 9px;
-
-
-	&:hover{
-		bottom: 133px;
-	}
-
-}
-
-@media (max-width: 992px) {
-
-.nav{
-
-	li{
-		a{
-			font-size: 17px;
-			padding: 0 7px;
-		}
-
-	}	
-
-	&.nav-inline{
-		li{
-			margin-right: 2px;
-			position: relative;
-			top: 3px;
-		}
-	}
-
-}
-
-
-}
-
-
-
 
 
 /********** @FORMS *********/
