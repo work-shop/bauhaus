@@ -5,10 +5,11 @@ var loaded = false;
 var state = 'intro';
 var moving = false;
 
-console.log('functions.js');
 
 //initial events, and general event binding
 jQuery(document).ready(function($) {
+
+	console.log('functions.js');
 
 	view();
 
@@ -49,15 +50,12 @@ $(window).resize(function() {
 
 //m or M	
 $(document).keypress(function(e) {
-
 	if(e.which == 109 || e.which == 77) {	
-						console.log('MS');	
-
 		if($("input:focus")){
 			var elem = document.activeElement;
 			if (! elem.type ){ 
 				menuToggle();
-				console.log('MS');	
+				console.log('m and menu toggle');	
 			}
 		}
 	}
@@ -69,16 +67,14 @@ $(document).keydown(function(e){
 		
 	}  
     return false;
-    }
 });
 
 //up arrow
 $(document).keydown(function(e){
-    if (e.keyCode) { 
+    if (e.keyCode == 38) { 
     
-		});  
-       return false;
-    }
+	}  
+    return false;
 });
 
 //left arrow
@@ -203,7 +199,7 @@ function loadPage(){
 		$('.landing').removeClass('landing').addClass('landed');
 		view();
 		if ( $('.spy').length > 0 ) { $(document).trigger('spy-init'); }	
-	},duration);	
+	},500);	
 		
 }
 
@@ -313,4 +309,8 @@ $(document).on('spy-init', function() {
 	 	//return ($('body').hasClass('home')) ? ((w.width() < 768) ? 350 : (w.height() / 2)) : 80;
 	 }
 });
+
+function scrollStart(){
+	
+}
 
