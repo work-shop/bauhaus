@@ -9,12 +9,7 @@ var moving = false;
 //initial events, and general event binding
 jQuery(document).ready(function($) {
 
-	console.log('functions.js');
-
 	view();
-
-	/* for touch scrolling, this event fires when touch point is moved*/
-	document.addEventListener("touchmove", scrollStart, false);
 	
 	$('#backtotop').click(function(event) {
 	  	event.preventDefault();
@@ -33,11 +28,14 @@ jQuery(document).ready(function($) {
 		href = href.toLowerCase();
 		scrollLink(href);	
 	});
-		
+
+	/* for touch scrolling, this event fires when touch point is moved*/
+	document.addEventListener("touchmove", scrollStart, false);	
 
 });//end document.ready
 
 
+//called when the user resizes the window
 $(window).resize(function() {
 
 	view();	
@@ -45,10 +43,27 @@ $(window).resize(function() {
 });//end window.resize
 
 
+$(window).scroll(function() { 
+
+	//number of pixels after which we consider the user to have begun to scroll
+	var after = 60;
+	       
+	if($(this).scrollTop() >= after && $("body").hasClass('before')){
+		$("body").removeClass('before').addClass('after');
+		console.log('adding after');
+	} 
+	else if($(this).scrollTop() < after && $("body").hasClass('after')){
+		$("body").removeClass('after').addClass('before');	
+		console.log('removing after');
+	} 
+		
+});//end window.scroll
+
+
 
 //FUNCTIONS
 
-//m or M	
+//keyboard pressed m or M	
 $(document).keypress(function(e) {
 	if(e.which == 109 || e.which == 77) {	
 		if($("input:focus")){
@@ -61,59 +76,53 @@ $(document).keypress(function(e) {
 	}
 });
 
-//down arrow
-$(document).keydown(function(e){
-    if (e.keyCode == 40) { 
-		
-	}  
-    return false;
-});
+//keyboard pressed up arrow	
+$(document).keypress(function(e) {
+	if(e.which == 38){	
+		if($("input:focus")){
+			var elem = document.activeElement;
+			if (! elem.type ){ 
 
-//up arrow
-$(document).keydown(function(e){
-    if (e.keyCode == 38) { 
-    
-	}  
-    return false;
-});
+			}
+		}
+	}	
+});	
 
-//left arrow
-$(document).keydown(function(e){
-    if (e.keyCode == 37) { 
-    	
-       return false;
-    }
-});
+//keyboard pressed left arrow	
+$(document).keypress(function(e) {
+	if(e.which == 37) {	
+		if($("input:focus")){
+			var elem = document.activeElement;
+			if (! elem.type ){ 
 
-//right arrow
-$(document).keydown(function(e){
-    if (e.keyCode == 39) { 
-    	
-       return false;
-    }
-});
+			}
+		}
+	}	
+});			
+
+
+//keyboard pressed right arrow	
+$(document).keypress(function(e) {
+	if(e.which == 39) {	
+		if($("input:focus")){
+			var elem = document.activeElement;
+			if (! elem.type ){ 
+
+			}
+		}
+	}	
+});			
 
 
 //initialize flexslider slideshows
 function flexsliderSetup(){
-
-	$('.flexslider-hero').flexslider({	
+	$('.flexslider').flexslider({	
 	      animation: 'fade',
-	      controlsContainer: '.flexslider-controls',	      
 	      slideshowSpeed: 8000,           
 		  animationSpeed: 700,
-	      directionNav: false,
+	      directionNav: true,
 	      controlNav: true
-	 });	 
-
-	$('.flexslider-story').flexslider({	
-	      animation: 'fade',
-	      controlsContainer: '.flexslider-controls',	      
-	      slideshowSpeed: 8000,           
-		  animationSpeed: 500,
-	      directionNav: false,
-	      controlNav: true
-	 }); 			 
+	 });	 		 
 	 	 	
 }
 
@@ -125,21 +134,19 @@ function scrollLink(destination){
 }
 
 //open and close the menu
-function menuToggle(){
-	console.log('menutoggle');
-	
-	if($('html').hasClass('menu-closed')){
+function menuToggle(){	
+	if($('body').hasClass('menu-closed')){
 		$('#menu').removeClass('closed');
 		$('#menu').addClass('open');
-		$('html').removeClass('menu-closed');
-		$('html').addClass('menu-open');
+		$('body').removeClass('menu-closed');
+		$('body').addClass('menu-open');
 	}
 	
-	else if($('html').hasClass('menu-open')){
+	else if($('body').hasClass('menu-open')){
 		$('#menu').removeClass('open');
 		$('#menu').addClass('closed');
-		$('html').removeClass('menu-open');
-		$('html').addClass('menu-closed');
+		$('body').removeClass('menu-open');
+		$('body').addClass('menu-closed');
 	}
 	
 }
@@ -148,40 +155,24 @@ function menuToggle(){
 //measure, resize, and adjust the viewport
 function view(){
 	
-	ch = $(window).height();
-	cw = $(window).width();
-	ph = ch - 130;
-	fw = cw*.5;
-	storyHeight = cw/3;
-	storyVideoHeight = ch - 110;
+	windowHeight = $(window).height();
+	windowWidth = $(window).width();
+
 	
 	if($(window).width() >= 768){		
-
-
-		$('.block.half').css('height',ch/2);
-		$('.block.golden-max').css('max-height',ch*.72);		
-		$('.block.sixty').css('height',ch*.69);										
-		$('.block.full').css('height',ch+60);	
-		$('.block.min').css('min-height',ch);				
-		$('.block.min-large').css('min-height',ch);	
-		$('.block.three-quarter').css('height',ph);	
-		$('.block.three-quarter-max').css('max-height',ph);		
-		//$('.flexslider-hero').css('height',fw);																									
+		$('.block.full').css('height',windowHeight);	
+		$('.block.min').css('min-height',windowHeight);		
+		$('.block.half').css('height',windowHeight*.75);				
+		$('.block.three-quarter').css('height',windowHeight*.75);	
 	}
 	else{
-
-		$('.block.half').css('height',ch/2);
-		$('.block.golden-max').css('max-height',ch*.70);		
-		$('.block.full').css('height',ch+60);	
-		$('.block.min').css('min-height',ch);							
-		$('.block.min-large').css('min-height','none');	
-		$('.block.three-quarter').css('height',ph);			
-		$('.block.three-quarter-max').css('max-height',ph);	
-		//$('.flexslider-hero').css('height',fw);																															
+		$('.block.full').css('height',windowHeight);	
+		$('.block.min').css('min-height',windowHeight);		
+		$('.block.half').css('height',windowHeight*.75);				
+		$('.block.three-quarter').css('height',windowHeight*.75);	
 	}
-
-	$('.home .slides').css('height',ch-240);
 	
+	//if the loadPage function has not been called yet, call it
 	if(!loaded){
 		loadPage();
 	}		
@@ -203,26 +194,7 @@ function loadPage(){
 		
 }
 
-$(window).scroll(function() { 
 
-	if( !$('html').hasClass('menu-open') ) {
-
-			if($('body').hasClass('home')){	
-		
-			var after = $('body').offset().top + 40;
-			       
-			if(76087066 >= after && $("body").hasClass('before')){
-				$("body").removeClass('before').addClass('after');
-			} 
-			else if($(this).scrollTop() < after && $("body").hasClass('after')){
-				$("body").removeClass('after').addClass('before');	
-			} 
-		
-		}
-
-	}
-
-});//end window.scroll
 
 
 $(document).on('spy-init', function() {
