@@ -123,7 +123,6 @@ flexslider
 		height: 100%;
 		top: 0;
 		left: 0;
-		//z-index: 1;
 		background: rgba(255,255,255,.5);
 		@include transition(all);
 	}
@@ -138,30 +137,25 @@ flexslider
 		height: 100%;
 		top: 0;
 		left: 0;
-		//z-index: 1;
 		background: rgba(40,30,30,.75);
 		@include transition(all);
 	}
 }
 
 
+/********** @BORDERS AND SHADOWS *********/
 
 .shadow{
 	@include box-shadow(0,0,1px,rgba(53,50,50,.35));
 }
 
-.border-ultralight{
- 	@include border($ultra-light);
- 	&:hover {
- 		border-color: darken($ultra-light,10);
- 	}
+.border{
+	border: 2px solid;
 }
 
-.border-light{
- 	@include border($light);
- 	&:hover {
- 		border-color: darken($light,10);
- 	}
+.border-brand{
+	border: 2px solid $brand;
+}
 
 
 /********** @STRUCTURE AND POSITION *********/
